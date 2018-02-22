@@ -10,18 +10,20 @@ Please find more information about the KB and the FixIT from http://blogs.techn
 
 The script is not signed so the PowerShell Execution Policy must be set prior to running: 
 1. Start PowerShell in Admin mode
-2. Type following command 
+2. Type the following command:
+```
 Set-ExecutionPolicy Unrestricted
+```
+The following command resets print environment to out of box:
 
-Following command resets print environment to out of box:
-print-reset.ps1 -full
+    print-reset.ps1 -full
 
-Following command corrects common printing issues:
-print-reset.ps1 -light
+The following command corrects common printing issues:
 
-Explanation of Light Mode and Full Mode
+    print-reset.ps1 -light
 
--light: Light mode - Corrects common printing issues.
+### Explanation of Light Mode and Full Mode
+#### -light: Light mode - Corrects common printing issues.
 1. Stop spooler service and dependents.
 2. Do not backup spooler service configuration: hklm\system\currentcontrolset\services - warn user -printbrm/PMC
 3. Do not Backup print configuration: hklm\system\currentcontrolset\control\print
@@ -35,7 +37,7 @@ Explanation of Light Mode and Full Mode
 11. Delete all files from the spooler directory
 12. Start the spooler service and dependents
 
--full: Full mode. Resets spooler service and print key to defaults.
+#### -full: Full mode. Resets spooler service and print key to defaults.
 1. Stop spooler service and dependents.
 2. Do not Backup spooler service configuration: hklm\system\currentcontrolset\services
 3. Do not Backup print configuration: hklm\system\currentcontrolset\control\print
@@ -44,14 +46,17 @@ Explanation of Light Mode and Full Mode
 6. Import default print key for correct machine architecture
 7. Import spooler service default configuration
 8. Detect if spoolsv.exe, spoolss.dll, localspl.dll, or win32spl.dll are not present in %windir%\system32, write error to log.
-The following command line switches are supported  
--light       Light Mode - Corrects common printing issues 
--full         Full mode - Resets spooler service and print registry keys to defaults 
--force      Do not prompt for confirmation 
--quiet      Do not display console output 
+
+The following command line switches are supported :
+
+ - `-light      Light Mode - Corrects common printing issues`
+ - `-full       Full mode - Resets spooler service and print registry keys to defaults`
+ - `-force      Do not prompt for confirmation`
+ - `-quiet      Do not display console output`
+
 A log is created automatically and saved in %windir%\printreset 
 
-System Requirements
-Windows 7 or Windows Server 2008 R2
-PowerShell 2.0 is required 
-The Fix it will run on Windows Server 2008 R2 that has the Print Role installed but will NOT make any changes
+System Requirements:
+Windows 7 or Windows Server 2008 R2  
+PowerShell 2.0 is required  
+The Fix it will run on Windows Server 2008 R2 that has the Print Role installed but will NOT make any changes  
